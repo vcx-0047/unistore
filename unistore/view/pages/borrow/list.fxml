@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+
+<VBox xmlns="http://javafx.com/javafx/25.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="unistore.controller.BorrowListController"
+      spacing="10" style="-fx-padding:20;">
+ 
+    <Button text="New Borrow" fx:id="btnNewBorrow" />
+
+    <TableView fx:id="borrowListTable"> 
+        <columns>
+            <TableColumn text="#" fx:id="colIndex" prefWidth="40"/>
+            <TableColumn text="Item" fx:id="colItem" prefWidth="150"/>
+            <TableColumn text="Employee" fx:id="colEmployee" prefWidth="150"/>
+            <TableColumn text="Borrow Date" fx:id="colDate" prefWidth="120"/>
+            <TableColumn text="Return Date" fx:id="colReturnDate" prefWidth="120"/>
+            <TableColumn text="Return" fx:id="colReturn" prefWidth="100"/>
+        </columns> 
+    </TableView>
+
+</VBox>

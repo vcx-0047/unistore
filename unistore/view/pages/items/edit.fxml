@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<VBox xmlns="http://javafx.com/javafx/25.0.1" spacing="10" style="-fx-padding:20;"
+      fx:controller="unistore.controller.EditItemController">
+
+    <TextField fx:id="nameField" promptText="Item Name"/>
+    <TextField fx:id="qtyField" promptText="Quantity"/>
+    <Button text="Save" fx:id="saveBtn"/>
+</VBox>

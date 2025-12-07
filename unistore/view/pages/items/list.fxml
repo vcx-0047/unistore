@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns="http://javafx.com/javafx/25.0.1" 
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="unistore.controller.ItemController"
+      spacing="10" style="-fx-padding:20;">
+    
+    <TableView fx:id="itemsTable">
+        <columns>
+            <TableColumn text="ID" fx:id="colId"/>
+            <TableColumn text="Name" fx:id="colName"/>
+            <TableColumn text="Quantity" fx:id="colQty"/>
+            <TableColumn text="Action" fx:id="colAction"/>
+        </columns>
+    </TableView>
+    
+    <Button text="Add Item" fx:id="createItemBtn"/>
+
+</VBox>
