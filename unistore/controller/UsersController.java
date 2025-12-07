@@ -54,17 +54,13 @@ public class UsersController {
     }
 
     // ------------------------
-
-
     //  Setup Table Columns
     // ------------------------
     private void setupTable() {
-
-        // map the User class fields
+ 
         colId.setCellValueFactory(cell -> cell.getValue().idProperty().asObject());
         colName.setCellValueFactory(cell -> cell.getValue().usernameProperty());
-
-        // Create "edit" button in each row
+ 
         Callback<TableColumn<User, Void>, TableCell<User, Void>> cellFactory = column -> {
             return new TableCell<User, Void>() {
                 private final Button btn = new Button("Edit");
@@ -73,17 +69,14 @@ public class UsersController {
                     btn.setOnAction(e -> {
                         try {
                             User user = getTableView().getItems().get(getIndex());
-
-                            // Load the FXML inside the main content stack
+ 
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("/unistore/view/pages/users/edit.fxml"));
                             Parent view = loader.load();
-
-                            // Get the EditUserController and pass the user
+ 
                             EditUserController controller = loader.getController();
                             controller.setUser(user);
-
-                            // Use MainController's contentStack to set the new page
-                            MainController mainController = MainController.getInstance(); // singleton or reference
+ 
+                            MainController mainController = MainController.getInstance();
                             mainController.getContentStack().getChildren().setAll(view);
 
                         } catch (IOException ex) {

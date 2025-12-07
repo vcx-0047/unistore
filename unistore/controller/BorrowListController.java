@@ -30,13 +30,12 @@ public class BorrowListController {
     @FXML private TableColumn<Borrow, LocalDate> colDate;
     @FXML private TableColumn<Borrow, Void> colReturn;
 
-    @FXML private Button btnNewBorrow; // link this to FXML
+    @FXML private Button btnNewBorrow;
 
     private ObservableList<Borrow> borrowList;
 
     @FXML
-    public void initialize() {
-        // Sample Data
+    public void initialize() { 
         borrowList = FXCollections.observableArrayList(
         new Borrow(
             new Employee(1, "Alice"),
@@ -73,30 +72,25 @@ public class BorrowListController {
         }
     }
 
-    private void setupColumns() {
-        // Index column
+    private void setupColumns() { 
         colIndex.setCellValueFactory(cell ->
                 new SimpleIntegerProperty(borrowList.indexOf(cell.getValue()) + 1).asObject()
         );
-
-        // Item column
+ 
         colItem.setCellValueFactory(new PropertyValueFactory<>("item"));
-
-        // Employee column
+ 
         colEmployee.setCellValueFactory(new PropertyValueFactory<>("employee"));
-
-        // Borrow Date column
+ 
         colDate.setCellValueFactory(cell ->
                 new SimpleObjectProperty<>(cell.getValue().getBorrowDate())
         );
-
-        // Return button column
+ 
         Callback<TableColumn<Borrow, Void>, TableCell<Borrow, Void>> cellFactory = col -> new TableCell<>() {
             private final Button btn = new Button("Return");
             {
                 btn.setOnAction(e -> {
                     Borrow record = getTableView().getItems().get(getIndex());
-                    borrowList.remove(record); // remove from table as "returned"
+                    borrowList.remove(record);
                 });
             }
             @Override

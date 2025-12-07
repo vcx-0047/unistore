@@ -36,8 +36,7 @@ public class ItemController {
         colId.setCellValueFactory(cell -> cell.getValue().idProperty().asObject());
         colName.setCellValueFactory(cell -> cell.getValue().nameProperty());
         colQty.setCellValueFactory(cell -> cell.getValue().quantityProperty().asObject());
-
-        // Edit button
+ 
         Callback<TableColumn<Item, Void>, TableCell<Item, Void>> cellFactory = column -> {
             return new TableCell<Item, Void>() {
                 private final Button btn = new Button("Edit");
@@ -71,8 +70,7 @@ public class ItemController {
             Parent view = loader.load();
             EditItemController controller = loader.getController();
             controller.setItem(item);
-
-            // Replace content in main stack
+ 
             MainController.getInstance().getContentStack().getChildren().setAll(view);
 
         } catch (IOException ex) {

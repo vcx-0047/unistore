@@ -27,8 +27,7 @@ public class BorrowController {
     private ObservableList<Borrow> borrowList;
 
     @FXML
-    public void initialize() {
-        // Sample data
+    public void initialize() { 
         employees = FXCollections.observableArrayList(
                 new Employee(1, "Alice"),
                 new Employee(2, "Bob"),
@@ -40,8 +39,7 @@ public class BorrowController {
                 new Item(2, "Keyboard", 5),
                 new Item(3, "Monitor", 2)
         );
-
-        // Setup employee combo
+ 
         employeeCombo.setItems(employees);
         employeeCombo.setEditable(true);
         employeeCombo.setConverter(new StringConverter<>() {
@@ -52,16 +50,14 @@ public class BorrowController {
                 return employees.stream().filter(emp -> emp.getName().equalsIgnoreCase(s)).findFirst().orElse(null);
             }
         });
-
-        // Filter while typing
+ 
         employeeCombo.getEditor().textProperty().addListener((obs, oldVal, newVal) -> {
             employeeCombo.setItems(employees.filtered(emp ->
                     emp.getName().toLowerCase().contains(newVal.toLowerCase())
             ));
             employeeCombo.show();
         });
-
-        // Borrow table
+ 
         borrowList = FXCollections.observableArrayList();
         borrowTable.setItems(borrowList);
 
@@ -70,8 +66,7 @@ public class BorrowController {
         addRowBtn.setOnAction(e -> addRow());
     }
 
-    private void setupTableColumns() {
-        // Item column with ComboBox
+    private void setupTableColumns() { 
         colItem.setCellFactory(col -> new TableCell<>() {
             private final ComboBox<Item> combo = new ComboBox<>(items);
 
@@ -83,8 +78,7 @@ public class BorrowController {
                         return items.stream().filter(it -> it.getName().equalsIgnoreCase(s)).findFirst().orElse(null);
                     }
                 });
-
-                // Filter while typing in cell
+ 
                 combo.getEditor().textProperty().addListener((obs, oldVal, newVal) -> {
                     combo.setItems(items.filtered(it ->
                             it.getName().toLowerCase().contains(newVal.toLowerCase())
@@ -108,16 +102,14 @@ public class BorrowController {
                 }
             }
         });
-
-        // Quantity column
+ 
         colQuantity.setCellValueFactory(cell -> cell.getValue().quantityProperty().asObject());
         colQuantity.setCellFactory(TextFieldTableCell.forTableColumn(new StringConverter<>() {
             @Override public String toString(Integer value) { return value.toString(); }
             @Override public Integer fromString(String s) { return Integer.parseInt(s); }
         }));
         colQuantity.setOnEditCommit(e -> e.getRowValue().setQuantity(e.getNewValue()));
-
-        // Action column (delete)
+ 
         colAction.setCellFactory(col -> new TableCell<>() {
             private final Button deleteBtn = new Button("Delete");
             {
@@ -136,9 +128,9 @@ public class BorrowController {
 
     private void addRow() {
         borrowList.add(new Borrow(
-                employeeCombo.getValue(), // Use selected employee
-                null, // Item to select in row
-                1,    // Quantity default
+                employeeCombo.getValue(), 
+                null, 
+                1, 
                 LocalDate.now(),
                 LocalDate.now().plusDays(7)
         ));

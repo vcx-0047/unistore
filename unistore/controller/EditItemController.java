@@ -23,8 +23,7 @@ public class EditItemController {
     public void initialize() {
         saveBtn.setOnAction(e -> {
             item.setName(nameField.getText());
-            item.setQuantity(Integer.parseInt(qtyField.getText()));
-            // go back to list page
+            item.setQuantity(Integer.parseInt(qtyField.getText())); 
             MainController.getInstance().loadPage("items/list.fxml");
         });
     }

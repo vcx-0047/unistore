@@ -16,8 +16,7 @@ public class LoginController {
     @FXML private PasswordField PasswordField;
 
     @FXML
-    public void initialize() {
-        // Pass the ActionEvent from the button to the method
+    public void initialize() { 
         loginBtn.setOnAction(this::switchToSceneTwo);
     }
 
